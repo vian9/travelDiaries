@@ -3,6 +3,7 @@ import "./display.css"
 import ReactPlayer from 'react-player'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import queryString from "query-string"
+
 const Display = () => {
   const { search } = useLocation();
   const myArray = search.slice(1);
@@ -11,6 +12,7 @@ console.log(myArray)
   
   return (
 
+    
     <div className="main">
       <div className='player-wrapper'>
         <ReactPlayer
