@@ -27,7 +27,7 @@ mongoose.connection.on("connected", function (success) {
 function connectMongoDb() {
 	console.log(config.MONGO_URL)
 	mongoose.connect(
-		 config.MONGO_URL || "mongodb://localhost:27017/charges-by-tenants",
+		 config.MONGO_URL || "mongodb+srv://vivekankit999:vivek9@cluster0.w9smrrp.mongodb.net/",
 		// {
 		// 	useUnifiedTopology: true,
 		// 	useNewUrlParser: true,

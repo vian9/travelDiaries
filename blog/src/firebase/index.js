@@ -1,8 +1,7 @@
-//import firebase from "firebase/app";
-// import firebase from 'firebase/compat/app';
 // import 'firebase/compat/auth';
+// import firebase from 'firebase/compat/app';
 // import 'firebase/compat/firestore';
-// import "firebase/storage";
+// import "firebase/compat/storage";
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyD3_F8vPHpK17Wb_SUVn3eK6FlPJVclzoY",
@@ -25,9 +24,13 @@
 // export { storage, firebase as default };
 
 // Import the functions you need from the SDKs you need
-import {firebase, initializeApp} from "firebase/app";
+import 'firebase/compat/auth';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import "firebase/compat/storage";
+import {initializeApp} from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import "firebase/storage";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -44,9 +47,15 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}else {
+  firebase.app(); // if already initialized, use that one
+}
+// const app = initializeApp(firebaseConfig);
+// eslint-disable-next-line no-unused-vars
+//const analytics = getAnalytics(app);
 
-const storage = firebase.storage();
+const storage = firebase.storage().ref();
 
 export { storage, firebase as default };

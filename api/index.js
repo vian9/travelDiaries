@@ -19,8 +19,10 @@ app.use(express.json());
 app.use(cors())
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
+mongoose.set("strictQuery", false);
+console.log(process.env.MONGO_URL);
 mongoose
-  .connect(process.env.Mongo_Url, {
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 
@@ -50,6 +52,6 @@ app.use("/api/categories", categoryRoute);
 app.use("/api/video", videoRoute);
 app.use("/api/audio", audioRoute);
 
-app.listen("5000", () => {
+app.listen("8000", () => {
   console.log("Backend is running.");
 });
